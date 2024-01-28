@@ -4,8 +4,8 @@ namespace todo_list_winforms.DAL.Repository;
 
 public interface ITodoNoteRepository
 {
-    void Add(TodoNote note);
-    void Edit(TodoNote note);
+    void Create(TodoNote note);
+    void Update(TodoNote note);
     void Delete(int id);
     IEnumerable<TodoNote> GetAll();
     IEnumerable<TodoNote> GetByValue();

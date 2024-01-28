@@ -1,6 +1,6 @@
 ﻿namespace todo_list_winforms
 {
-    partial class TodoList
+    partial class TodoNoteView
     {
         /// <summary>
         ///  Required designer variable.

@@ -33,7 +33,6 @@
             isDoneDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             titleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            categoryIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             startDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             endDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -48,7 +47,7 @@
             contextBindingSource = new BindingSource(components);
             contextBindingSource1 = new BindingSource(components);
             deadline_label = new Label();
-            deadline_textBox = new TextBox();
+            deadline_dateTimePicker = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)todo_dataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)todoNoteBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)contextBindingSource).BeginInit();
@@ -61,7 +60,7 @@
             todo_dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             todo_dataGrid.BackgroundColor = SystemColors.Control;
             todo_dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            todo_dataGrid.Columns.AddRange(new DataGridViewColumn[] { isDoneDataGridViewCheckBoxColumn, titleDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, categoryIdDataGridViewTextBoxColumn, startDateDataGridViewTextBoxColumn, endDateDataGridViewTextBoxColumn, idDataGridViewTextBoxColumn });
+            todo_dataGrid.Columns.AddRange(new DataGridViewColumn[] { isDoneDataGridViewCheckBoxColumn, titleDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, startDateDataGridViewTextBoxColumn, endDateDataGridViewTextBoxColumn, idDataGridViewTextBoxColumn });
             todo_dataGrid.DataSource = todoNoteBindingSource;
             todo_dataGrid.GridColor = SystemColors.ButtonShadow;
             todo_dataGrid.Location = new Point(12, 297);
@@ -87,12 +86,6 @@
             descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
             descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
             descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            // 
-            // categoryIdDataGridViewTextBoxColumn
-            // 
-            categoryIdDataGridViewTextBoxColumn.DataPropertyName = "CategoryId";
-            categoryIdDataGridViewTextBoxColumn.HeaderText = "CategoryId";
-            categoryIdDataGridViewTextBoxColumn.Name = "categoryIdDataGridViewTextBoxColumn";
             // 
             // startDateDataGridViewTextBoxColumn
             // 
@@ -189,29 +182,30 @@
             deadline_label.TabIndex = 1;
             deadline_label.Text = "Крайний срок";
             // 
-            // deadline_textBox
+            // deadline_dateTimePicker
             // 
-            deadline_textBox.Location = new Point(12, 119);
-            deadline_textBox.Name = "deadline_textBox";
-            deadline_textBox.Size = new Size(776, 23);
-            deadline_textBox.TabIndex = 3;
+            deadline_dateTimePicker.Format = DateTimePickerFormat.Custom;
+            deadline_dateTimePicker.Location = new Point(12, 119);
+            deadline_dateTimePicker.Name = "deadline_dateTimePicker";
+            deadline_dateTimePicker.Size = new Size(776, 23);
+            deadline_dateTimePicker.TabIndex = 5;
             // 
-            // TodoList
+            // TodoNoteView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 579);
+            Controls.Add(deadline_dateTimePicker);
             Controls.Add(delete_button);
             Controls.Add(save_button);
             Controls.Add(create_button);
-            Controls.Add(deadline_textBox);
             Controls.Add(description_textBox);
             Controls.Add(title_textBox);
             Controls.Add(deadline_label);
             Controls.Add(description_label);
             Controls.Add(title_label);
             Controls.Add(todo_dataGrid);
-            Name = "TodoList";
+            Name = "TodoNoteView";
             Text = "Список задач";
             ((System.ComponentModel.ISupportInitialize)todo_dataGrid).EndInit();
             ((System.ComponentModel.ISupportInitialize)todoNoteBindingSource).EndInit();
@@ -243,6 +237,6 @@
         private BindingSource contextBindingSource;
         private BindingSource contextBindingSource1;
         private Label deadline_label;
-        private TextBox deadline_textBox;
+        private DateTimePicker deadline_dateTimePicker;
     }
 }

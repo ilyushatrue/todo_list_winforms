@@ -14,14 +14,15 @@ public class TodoNoteRepository : BaseRepository, ITodoNoteRepository
     public void Create(TodoNote note)
     {
         _context.Set<TodoNote>();
-        note.Id = 0;
         _context.Attach(note);
-
+        _context.SaveChanges();
+        _context.ChangeTracker.Clear();
     }
 
     public void Delete(int id)
     {
-        _context.Set<TodoNote>().Remove(new TodoNote { Id = id });  
+        _context.Set<TodoNote>();
+        _context.Remove(new TodoNote { Id = id });  
         _context.SaveChanges();
     }
 
@@ -29,16 +30,12 @@ public class TodoNoteRepository : BaseRepository, ITodoNoteRepository
     {
         _context.Entry(note).State = EntityState.Modified;
         _context.SaveChanges();
+        _context.ChangeTracker.Clear();
     }
 
     public IEnumerable<TodoNote> GetAll()
     {
         var quiry = _context.Set<TodoNote>().AsNoTracking();
         return quiry.ToArray();
-    }
-
-    public IEnumerable<TodoNote> GetByValue()
-    {
-        throw new NotImplementedException();
     }
 }

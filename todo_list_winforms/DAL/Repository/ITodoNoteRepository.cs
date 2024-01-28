@@ -8,5 +8,4 @@ public interface ITodoNoteRepository
     void Update(TodoNote note);
     void Delete(int id);
     IEnumerable<TodoNote> GetAll();
-    IEnumerable<TodoNote> GetByValue();
 }

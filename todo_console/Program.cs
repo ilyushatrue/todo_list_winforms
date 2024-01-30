@@ -1,10 +1,12 @@
-﻿namespace todo_console
+﻿using System.Data;
+
+namespace todo_console
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine(DateTime.Now);
         }
     }
 }

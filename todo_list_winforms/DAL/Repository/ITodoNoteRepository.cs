@@ -7,5 +7,5 @@ public interface ITodoNoteRepository
     void Create(TodoNote note);
     void Update(TodoNote note);
     void Delete(int id);
-    IEnumerable<TodoNote> GetAll();
+    IEnumerable<TodoNote> GetAll(bool completedOnly);
 }

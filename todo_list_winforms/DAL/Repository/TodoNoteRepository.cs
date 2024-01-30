@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using todo_list_winforms.DAL.Models;
-using todo_list_winforms.DAL.Repository.Common;
 
 namespace todo_list_winforms.DAL.Repository;
 
-public class TodoNoteRepository : BaseRepository, ITodoNoteRepository
+public class TodoNoteRepository : ITodoNoteRepository
 {
-
-    public TodoNoteRepository(Context context) : base(context)
+    private readonly Context _context;
+    public TodoNoteRepository(Context context) 
     {
+        _context = context;
     }
 
     public void Create(TodoNote note)
@@ -33,9 +33,10 @@ public class TodoNoteRepository : BaseRepository, ITodoNoteRepository
         _context.ChangeTracker.Clear();
     }
 
-    public IEnumerable<TodoNote> GetAll()
+    public IEnumerable<TodoNote> GetAll(bool completedOnly)
     {
-        var quiry = _context.Set<TodoNote>().AsNoTracking();
-        return quiry.ToArray();
+        var query = _context.Set<TodoNote>().AsNoTracking();
+        if (completedOnly == true) query = query.Where(x => x.IsDone == false);
+        return query.ToArray();
     }
 }

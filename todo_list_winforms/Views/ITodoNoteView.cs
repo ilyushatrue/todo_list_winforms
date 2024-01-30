@@ -9,15 +9,19 @@ public interface ITodoNoteView
     public DateTime? StartDate { get; set; }
     public DateTime? EndDate { get; set; }
 
-    public bool IsEdit { get; set; }
     public bool IsSuccessful { get; set; }
     public string? Message { get; set; }
+    public bool ShowOnlyCompleted { get; set; }
 
     event EventHandler EditEvent;
     event EventHandler DeleteEvent;
+    event EventHandler UpdateEvent;
     event EventHandler CreateEvent;
     event EventHandler CancelEvent;
+    event EventHandler TodoListClickEvent;
+    event EventHandler OnlyCompletedEvent;
 
     void SetTodoListBindingSource(BindingSource todoList);
     void Show();
+    void ShowMessage(string message);
 }

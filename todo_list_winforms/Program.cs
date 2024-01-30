@@ -17,7 +17,7 @@ namespace todo_list_winforms
 
             var view = new TodoNoteView();
             var repository = new TodoNoteRepository(Context);
-            var presenter = new TodoNotePresenter(view, repository);
+            _ = new TodoNotePresenter(view, repository);
             Application.Run(view);
         }
     }

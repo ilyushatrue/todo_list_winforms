@@ -1,8 +1,6 @@
-using Microsoft.EntityFrameworkCore;
 using todo_list_winforms.DAL;
 using todo_list_winforms.DAL.Repository;
 using todo_list_winforms.Presenters;
-using todo_list_winforms.Views;
 
 namespace todo_list_winforms
 {

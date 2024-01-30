@@ -1,7 +1,6 @@
 ﻿using System.Timers;
 using todo_list_winforms.DAL.Models;
 using todo_list_winforms.DAL.Repository;
-using todo_list_winforms.Migrations;
 using todo_list_winforms.Views;
 using Timer = System.Timers.Timer;
 
@@ -97,7 +96,7 @@ public class TodoNotePresenter
 
     private void NotifySoonExpires(object sender, ElapsedEventArgs e)
     {
-        _view.ShowMessage("Через 5 минут истечет крайний срок задачи!");
+        _view.ShowMessage($"Через 5 минут истечет крайний срок задачи '{_view.Title}");
     }
 
     private void CleanViewFields()
@@ -107,6 +106,7 @@ public class TodoNotePresenter
         _view.Description = "";
         _view.StartDate = null;
         _view.EndDate = null;
+        _view.IsDone = false;
     }
 
     private void DeleteSelectedTodo(object? sender, EventArgs e)
@@ -121,10 +121,10 @@ public class TodoNotePresenter
             CleanViewFields();
             LoadAllTodoList();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             _view.IsSuccessful = false;
-            _view.Message = "Ошибка!";
+            _view.Message = ex.Message;
             throw;
         }
     }
